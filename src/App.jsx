@@ -1,6 +1,7 @@
 import { useState } from "react";
 import List from "./List";
 import Item from "./Item";
+import Form from "./Form";
 
 function App(){
   const [data, setData] = useState([
@@ -8,6 +9,12 @@ function App(){
     {id: 2, content: "React is fun.", name: "Bob"},
     {id: 3, content: "Yay, interesting.", name: "Doe"}
   ]);
+  const [showForm, setShowForm] = useState(false);
+
+  const add = (content, name) => {
+    const id = data[data.length - 1].id + 1;
+    setData([...data, {id, content, name}]);
+  };
 
   const remove = id => {
     setData(data.filter(item => item.id !== id));
@@ -19,6 +26,8 @@ function App(){
       margin: "20px auto"
     }}>
       <h1>Yaycha</h1>
+      <Form add={add} />
+
       <List>
         {data.map(item => (
           <Item 
