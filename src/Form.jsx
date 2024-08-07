@@ -1,11 +1,14 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { AppContext } from "./ThemeApp";
 
 export default function Form({add}){
+
+    const {mode} = useContext(AppContext);
     const contentRef = useRef();
     const nameRef = useRef();
 
     return (
-        <form action="#" style={{display: "flex", flexDirection: "column", gap: 3, padding: 10, borderRadius: 8, marginBottom: 20, background: "#def"}} onSubmit={ (e) => {
+        <form action="#" style={{display: "flex", flexDirection: "column", gap: 3, padding: 10, borderRadius: 8, marginBottom: 20, background: mode === "dark" ? "#555" : "#def"}} onSubmit={ (e) => {
             e.preventDefault();
             const content = contentRef.current.value;
             const name = nameRef.current.value;
