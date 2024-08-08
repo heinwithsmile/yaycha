@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import { AppContext } from "./ThemeApp";
+import { AppContext } from "../ThemeApp";
 
 export default function Form({add}){
 
